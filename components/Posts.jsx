@@ -20,30 +20,6 @@ import { db } from '../firebase';
 // 		username: 'Michael Dam',
 // 		caption: 'I am awesome',
 // 	},
-// 	{
-// 		id: 3,
-// 		img: 'https://images.unsplash.com/photo-1605643097366-2ebbc7aeb96b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80',
-// 		userImg:
-// 			'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80',
-// 		username: 'Peyman Farmani',
-// 		caption: 'I am awesome',
-// 	},
-// 	{
-// 		id: 4,
-// 		img: 'https://images.unsplash.com/photo-1614586312755-49ac117e6d5c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80',
-// 		userImg:
-// 			'https://images.unsplash.com/photo-1516726817505-f5ed825624d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80',
-// 		username: 'Peyman Farmani',
-// 		caption: 'I am awesome',
-// 	},
-// 	{
-// 		id: 5,
-// 		img: 'https://images.unsplash.com/photo-1616715279061-5ef5578b6faa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80',
-// 		userImg:
-// 			'https://images.unsplash.com/photo-1440589473619-3cde28941638?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80',
-// 		username: 'Raphael Lovaski',
-// 		caption: 'I am awesome',
-// 	},
 // ];
 
 const Posts = () => {
@@ -66,6 +42,7 @@ const Posts = () => {
 			{posts.map((post) => (
 				<Post
 					key={post.id}
+					id={post.id}
 					img={post.data().image}
 					username={post.data().username}
 					caption={post.data().caption}
