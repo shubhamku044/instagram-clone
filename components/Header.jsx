@@ -8,11 +8,16 @@ import {
 	HeartIcon,
 	UserGroupIcon,
 } from '@heroicons/react/outline';
+
 import { signIn, signOut, useSession } from 'next-auth/react';
-import SignIn from '../pages/auth/signin';
+import { useRouter } from 'next/router';
+import { useRecoilState } from 'recoil';
+import { modalState } from '../atoms/modalAtom';
 
 const Header = () => {
 	const { data: session } = useSession();
+	const [open, setOpen] = useRecoilState(modalState);
+	const router = useRouter();
 
 	// console.log(session);
 
@@ -21,29 +26,27 @@ const Header = () => {
 			<div className="flex justify-between max-w-6xl px-0 sm:px-4 mx-1 sm:mx-5 lg:mx-auto">
 				{/* Left */}
 
-				<div className="relative hidden lg:inline-grid w-24 cursor-pointer">
-					<Link href="/">
-						<a>
-							<Image
-								src="https://links.papareact.com/ocw"
-								layout="fill"
-								objectFit="contain"
-								alt="Instagram Logo"
-							/>
-						</a>
-					</Link>
+				<div
+					onClick={() => router.push('/')}
+					className="relative hidden lg:inline-grid w-24 cursor-pointer"
+				>
+					<Image
+						src="https://links.papareact.com/ocw"
+						layout="fill"
+						objectFit="contain"
+						alt="Instagram Logo"
+					/>
 				</div>
-				<div className="relative w-10 lg:hidden flex-shrink-0 cursor-pointer">
-					<Link href="/">
-						<a>
-							<Image
-								src="https://links.papareact.com/jjm"
-								layout="fill"
-								objectFit="contain"
-								alt="Instagram Logo"
-							/>
-						</a>
-					</Link>
+				<div
+					onClick={() => router.push('/')}
+					className="relative w-10 lg:hidden flex-shrink-0 cursor-pointer"
+				>
+					<Image
+						src="https://links.papareact.com/jjm"
+						layout="fill"
+						objectFit="contain"
+						alt="Instagram Logo"
+					/>
 				</div>
 
 				{/* Middle */}
@@ -62,7 +65,10 @@ const Header = () => {
 
 				{/* Right */}
 				<div className="flex items-center justify-end space-x-4">
-					<HomeIcon className="navBtn" />
+					<HomeIcon
+						className="navBtn"
+						onClick={() => router.push('/')}
+					/>
 					<MenuIcon className="h-6 md:hidden cursor-pointer" />
 
 					{session ? (
@@ -73,7 +79,10 @@ const Header = () => {
 									3
 								</div>
 							</div>
-							<PlusCircleIcon className="navBtn" />
+							<PlusCircleIcon
+								onClick={() => setOpen(true)}
+								className="navBtn"
+							/>
 							<UserGroupIcon className="navBtn" />
 							<HeartIcon className="navBtn" />
 							<img
